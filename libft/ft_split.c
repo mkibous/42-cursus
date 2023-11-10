@@ -6,12 +6,11 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:32:25 by mkibous           #+#    #+#             */
-/*   Updated: 2023/11/04 23:08:11 by mkibous          ###   ########.fr       */
+/*   Updated: 2023/11/06 15:05:42 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 int	ft_cont(const char *s, char c)
 {
 	int	i;

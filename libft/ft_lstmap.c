@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:39:24 by mkibous           #+#    #+#             */
-/*   Updated: 2023/11/06 13:15:29 by mkibous          ###   ########.fr       */
+/*   Updated: 2023/11/06 15:03:40 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
     return (first);
     
 }
-/*void *ft_f (void *s)
+void *ft_f (void *s)
 {
     return("mehdi");
 }
@@ -45,10 +45,8 @@ int main()
 {
     char str[] = "hello";
     t_list *h = ft_lstnew(str);
-    h->content = malloc(10);
     ft_strlcpy(h->content, str, sizeof(str));
     t_list *n = ft_lstnew(str);
-    n->content = malloc(10);
     ft_strlcpy(n->content, str, sizeof(str));
     h->next = n;
     n->next = NULL;
@@ -60,6 +58,8 @@ int main()
         printf("%s\n", new->content);
         new = new->next;
     }
+    /*if(new == NULL)
+        printf("null");*/
     //printf("this is the content : %s\n", n->content);
     return 0;
-}*/
+}
