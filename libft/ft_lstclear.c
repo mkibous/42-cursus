@@ -25,24 +25,30 @@ void ft_lstclear(t_list **lst, void (*del)(void*))
 }
 /*void ft_free(void *ds)
 {
-    free(ds);
+    ds = NULL;
 }
 int main()
 {
-    char str[] = "hello";
+    t_list **lst;
+    lst = (t_list **)malloc(sizeof(t_list *));
+    char *str = "mehdi kibous";
     t_list *h = ft_lstnew(str);
-    h->content = malloc(10);
-    ft_strlcpy(h->content, str, sizeof(str));
     t_list *n = ft_lstnew(str);
-    n->content = malloc(10);
-    ft_strlcpy(n->content, str, sizeof(str));
-    h->next = n;
-    n->next = NULL;
-    printf("this is the content : %s\n", h->content);
-    printf("this is the content : %s\n", n->content);
-    ft_lstclear(&h, ft_free);
-    if(h == NULL)
+    ft_lstadd_back(lst, h);
+    ft_lstadd_back(lst, n);
+    printf("this is the content : %s\n", (*lst)->content);
+    printf("this is the content : %s\n", (*lst)->next->content);
+    ft_lstclear(lst, ft_free);
+    // printf("this is the content : %s\n", (*lst)->content);
+    // (*lst) = (*lst)->next;
+    //  printf("this is the content : %s\n", (*lst)->content);
+    while(*lst)
+    {
+        printf("%s", (*lst)->content);
+        *lst = (*lst)->next;
+    }
+    if(!*lst)
         printf("null");
-    //printf("this is the content : %s\n", n->content);
+    // printf("this is the content : %s\n", n->content);
     return 0;
 }*/
