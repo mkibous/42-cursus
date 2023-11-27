@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "string.h": "c",
+        "locale": "cpp",
+        "get_next_line.h": "c"
+    }
+}

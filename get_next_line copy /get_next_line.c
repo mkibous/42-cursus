@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:59:06 by mkibous           #+#    #+#             */
-/*   Updated: 2023/11/18 20:42:08 by mkibous          ###   ########.fr       */
+/*   Updated: 2023/11/27 15:52:47 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,49 +14,44 @@
 
 char *get_next_line(int fd)
 {
-    int j;
-    static int i = 0;
-    char *str;
-    static char buf[BUFFER_SIZE];
+    int i;
+    static char *buf;
     char *ret;
+    char *rd;
     
-    if (fd < 0  || BUFFER_SIZE <= 0)
+    if (fd < 0  || BUFFER_SIZE <= 0 || fd > OPEN_MAX || BUFFER_SIZE > INT_MAX)
         return (NULL);
-    j = 0;
-    if(i == 0)
-        read(fd, buf, BUFFER_SIZE);
-    if(!buf[i])
-        return (NULL);
-    str = (buf + i);
-    int l = ft_cont(str);
-    if(l + i >= BUFFER_SIZE)
-        l = BUFFER_SIZE - i;
-    ret = (char *)malloc(l + 1);
-    if (ret == NULL)
-        return (NULL);
-    while(j < l && buf[i] && buf[i] != '\n')
+    i = 0;
+    rd = ft_readln(fd);
+    if(buf == NULL && rd == NULL)
+        return(NULL);
+    if(rd == NULL && buf == NULL)
+        return(NULL);
+    if (buf == NULL)
+        buf = strdup("");
+    buf = ft_strjoin(buf, rd);
+    if (buf == NULL)
+        return(NULL);
+    free(rd);
+    if (find_nl(buf) == 0)
     {
-        ret[j] = buf[i];
-        i++;
-        j++;
+        free(buf);
+        buf = NULL;
+        return ( NULL);
     }
-    if(buf[i] == '\n')
-    {
-        ret[j] = buf[i];
-        i++;
-        j++;
-    }
-    ret[j] = '\0';
+    ret = ft_substr(buf, 0, find_nl(buf));
+    if(buf + i)
+        buf = ft_newbuf(buf);
     return (ret);
 }
 // #include <fcntl.h>
 // int main ()
 // {
-//     int fd = open("read_error.txt", O_CREAT);
-    
+//     char *line;
+//     //char c = 0;
+//     int fd = open("read.txt", O_CREAT | O_RDWR, 0666);
+//     char c = 0;
 //     printf("%s", get_next_line(fd));
 //     printf("%s", get_next_line(fd));
 //     printf("%s", get_next_line(fd));
-//     printf("%s", get_next_line(fd));
-//     // printf("%s\n", get_next_line(fd));
 // }
