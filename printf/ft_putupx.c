@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 21:33:57 by mkibous           #+#    #+#             */
-/*   Updated: 2023/11/08 21:34:58 by mkibous          ###   ########.fr       */
+/*   Updated: 2023/12/02 18:28:53 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_putupx(unsigned int s, int *l)
 {
 	int		i;
 	char	*hexa;
-	char	ind[255];
+	char	ind[17];
 
 	hexa = "0123456789ABCDEF";
 	i = 0;

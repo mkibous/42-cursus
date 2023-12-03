@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:52:17 by mkibous           #+#    #+#             */
-/*   Updated: 2023/11/08 16:06:33 by mkibous          ###   ########.fr       */
+/*   Updated: 2023/12/02 18:28:24 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_hexad(void *str, int *l)
 	int				i;
 	char			*hexa;
 	unsigned long	s;
-	char			ind[255];
+	char			ind[17];
 
 	hexa = "0123456789abcdef";
 	i = 0;
