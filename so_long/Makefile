@@ -1,7 +1,8 @@
-SRCS =	so_long.c get_next_line_utils.c get_next_line.c
-NAME = game
+SRCS =	so_long.c get_next_line_utils.c get_next_line.c \
+	chek.c graph.c idl.c monster.c path.c
+NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -fsanitize=address -Wall -Wextra
 RM = rm -f
 LIBFT = libft/libft.a
 PRINT = printf/libftprintf.a

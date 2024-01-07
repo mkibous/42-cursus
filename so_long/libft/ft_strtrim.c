@@ -1,36 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putx.c                                          :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 21:29:39 by mkibous           #+#    #+#             */
-/*   Updated: 2023/12/13 09:56:36 by mkibous          ###   ########.fr       */
+/*   Created: 2023/11/02 14:51:35 by mkibous           #+#    #+#             */
+/*   Updated: 2024/01/03 17:41:48 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_putx(unsigned int s, int *l)
+static int	chek(const char *s, char c)
 {
-	int		i;
-	char	*hexa;
-	char	ind[17];
+	int	i;
 
-	hexa = "0123456789abcdef";
 	i = 0;
-	while (s >= 16)
+	while (s[i])
 	{
-		ind[i] = hexa[s % 16];
-		s = s / 16;
+		if (c == s[i])
+			return (1);
 		i++;
 	}
-	if (s < 16)
-		ind[i] = hexa[s];
-	while (i >= 0)
-	{
-		ft_putchar(ind[i], l);
-		i--;
-	}
+	return (0);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	int		i;
+	int		l;
+	int		n;
+
+	if (s1 == NULL || set == NULL)
+		return (NULL);
+	i = 0;
+	l = ft_strlen(s1) - 1;
+	while (s1[i] && chek(set, s1[i]))
+		i++;
+	while (l > i && chek(set, s1[l]))
+		l--;
+	n = l - i + 1;
+	return (ft_substr(s1, i, n));
 }
