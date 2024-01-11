@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 16:11:21 by mkibous           #+#    #+#             */
-/*   Updated: 2024/01/07 14:52:20 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/01/09 15:14:11 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,10 @@ void	ft_def(t_vars *vars)
 	vars->en = mlx_xpm_file_to_image(vars->mlx, vars->en_path, &l, &w);
 	if (vars->tree == 0 || vars->coin == 0 || vars->idle == 0
 		|| vars->house == 0 || vars->img == 0 || vars->en == 0)
+	{
+		ft_printf("problem on xpm files");
 		exit(1);
-	mlx_clear_window(vars->mlx, vars->win);
+	}
 }
 
 void	ft_putimg(t_vars *vars, void *img, int m, int k)

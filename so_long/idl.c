@@ -6,7 +6,7 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 16:14:30 by mkibous           #+#    #+#             */
-/*   Updated: 2024/01/05 15:44:34 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/01/09 11:23:14 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,10 @@ void	ft_idlto_a(t_vars *vars)
 	}
 	else if (vars->map[vars->y][vars->x - 1] == 'E')
 		vars->e = 1;
+}
+
+void	ft_hide(t_vars *vars)
+{
+	vars->map[vars->y][vars->x] = '0';
+	vars->hide = 1;
 }

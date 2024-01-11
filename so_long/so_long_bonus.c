@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 11:10:27 by mkibous           #+#    #+#             */
-/*   Updated: 2024/01/11 08:58:58 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/01/11 08:59:12 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	get_map(t_vars *vars)
 
 void	ft_display(t_vars *vars)
 {
+	monster_gen(vars);
 	vars->mlx = mlx_init();
 	if (vars->mlx == 0)
 		exit(1);
@@ -65,6 +66,7 @@ void	ft_display(t_vars *vars)
 	mlx_hook(vars->win, 17, 0, destroy, vars);
 	mlx_hook(vars->win, 2, 0, key_hook, vars);
 	ft_graphiqual_out(vars);
+	mlx_loop_hook(vars->mlx, mon_move, vars);
 	mlx_loop(vars->mlx);
 	exit(0);
 }

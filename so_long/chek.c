@@ -6,27 +6,35 @@
 /*   By: mkibous <mkibous@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 16:07:36 by mkibous           #+#    #+#             */
-/*   Updated: 2024/01/07 14:56:31 by mkibous          ###   ########.fr       */
+/*   Updated: 2024/01/09 15:13:18 by mkibous          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_chaekmap(char *map)
+int	ft_chaekmap(char *map, t_vars *vars)
 {
 	int	i;
 
-	i = 0;
-	while (map[i])
+	i = ft_strlen(map);
+	while (i >= 0)
 	{
 		if (map[i] == '.')
 		{
-			if (ft_strncmp((map + i), ".ber", 5) != 0)
-				return (0);
+			if (ft_strncmp((map + i), ".ber", 5) == 0)
+			{
+				vars->fd = open(map, O_RDONLY);
+				if (vars->fd == -1)
+				{
+					ft_printf("Erreur : open return -1");
+					exit(1);
+				}
+				return (1);
+			}
 		}
-		i++;
+		i--;
 	}
-	return (1);
+	return (0);
 }
 
 int	ft_chek(char *str, t_vars *vars)
